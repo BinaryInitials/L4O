@@ -1,6 +1,6 @@
 #!/bin/bash
 className="CurveFitSingleColumnDynamicFit"
-packageName="com.curve.fit"
+packageName="curve.fit"
 mainclasspath=$packageName"."$className
 jarName=$className".jar"
 directories=`ls`
