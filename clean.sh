@@ -1,4 +1,5 @@
 #!/bin/bash
+rm -f *.csv
 rm -f *.php
 rm -f *.html
 rm -f *.jar
