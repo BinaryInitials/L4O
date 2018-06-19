@@ -54,6 +54,27 @@ public class CurveFitSingleColumnDynamicFit {
 				double pFlat = C - B*B/(4*A);
 				System.out.println((A > 0 ? "MIN:\t" : "MAX:\t") + String.format("%.2f", pFlat) + "\tIN " + String.format("%.2f", tStep) + " sec");
 			}
+			if(coefs.size() > 3){
+				double D = coefs.get(coefs.size()-1);
+				double C = coefs.get(coefs.size()-2);
+				double B = coefs.get(coefs.size()-3);
+				double A = coefs.get(coefs.size()-4);
+				
+				double determinant = B*B-3*A*C;
+				if(determinant > 0){
+					double t1 = -B/(3*A) + Math.sqrt(determinant)/(3*A);
+					double t2 = -B/(3*A) - Math.sqrt(determinant)/(3*A);
+					double p1 = A*t1*t1*t1 + B*t1*t1 + C*t1 + D;
+					double p2 = A*t2*t2*t2 + B*t2*t2 + C*t2 + D;
+					if(p1>p2){
+						System.out.println("MAX: " + String.format("%.2f",p1) + "\t @ " + t1);
+						System.out.println("MIN: " + String.format("%.2f",p2) + "\t @ " + t2);
+					}else{
+						System.out.println("MIN: " + String.format("%.2f",p1) + "\t @ " + t1);
+						System.out.println("MAX: " + String.format("%.2f",p2) + "\t @ " + t2);
+					}
+				}
+			}
 		}
 	}
 	
