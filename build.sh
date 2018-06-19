@@ -22,7 +22,7 @@ if [[ " ${directories[@]} " =~ $libs ]]; then
 
 	if [[ " ${directories[@]} " =~ $src ]]; then
 		mkdir bin && javac -cp $libraries_for_compiler -d bin $(find . -name "*.java"  | grep -v Test) && echo "Class-Path: " > manifest.txt && for i in $libraries_for_manifest; do echo " libs/"$i" " >> manifest.txt ; done && echo "Main-Class: "$mainclasspath >> manifest.txt && cd bin && jar -cvfm ../$jarName ../manifest.txt *
-		echo "Build succeeded. To run, use: java -jar "$jarName
+		echo "Build succeeded."
 	else
 		echo "build-script is not in a java project."
 		exit 1
@@ -39,7 +39,7 @@ fi
 
 if [[ " ${directories[@]} " =~ $src ]]; then
 	mkdir bin && javac -d bin $(find . -name "*.java"  | grep -v Test) && cd bin && echo "Main-Class: "$mainclasspath > manifest.txt && jar -cvfm $jarName manifest.txt * && mv $jarName ../
-	echo "Build succeeded. To run, use: java -jar "$jarName
+	echo "Build succeeded."
 else
 	echo "build-script is not in a java project. Please move the script directly in a java project."
 	exit 1
