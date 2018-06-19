@@ -67,11 +67,21 @@ public class CurveFitSingleColumnDynamicFit {
 					double p1 = A*t1*t1*t1 + B*t1*t1 + C*t1 + D;
 					double p2 = A*t2*t2*t2 + B*t2*t2 + C*t2 + D;
 					if(p1>p2){
-						System.out.println("MAX: " + String.format("%.2f",p1) + "\t @ " + t1);
-						System.out.println("MIN: " + String.format("%.2f",p2) + "\t @ " + t2);
+						if(t1 > t2){
+							System.out.println("MIN: " + String.format("%.2f",p2) + "\t @ " + t2);
+							System.out.println("MAX: " + String.format("%.2f",p1) + "\t @ " + t1);
+						}else{
+							System.out.println("MAX: " + String.format("%.2f",p1) + "\t @ " + t1);
+							System.out.println("MIN: " + String.format("%.2f",p2) + "\t @ " + t2);
+						}
 					}else{
-						System.out.println("MIN: " + String.format("%.2f",p1) + "\t @ " + t1);
-						System.out.println("MAX: " + String.format("%.2f",p2) + "\t @ " + t2);
+						if(t1 > t2){
+							System.out.println("MAX: " + String.format("%.2f",p2) + "\t @ " + t2);
+							System.out.println("MIN: " + String.format("%.2f",p1) + "\t @ " + t1);
+						}else {
+							System.out.println("MIN: " + String.format("%.2f",p1) + "\t @ " + t1);
+							System.out.println("MAX: " + String.format("%.2f",p2) + "\t @ " + t2);
+						}
 					}
 				}
 			}
